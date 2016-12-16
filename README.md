@@ -8,11 +8,9 @@ This project includes only the *ehandler.ps* PostScript file, along with its acc
 
 ## System Requirements
 
-Any printer that includes Adobe PostScript Level 1, PostScript Level 2, or PostScript 3. To determine whether PostScript is included with your printer, see your printer's documentation or contact the printer manufacturer.
+Any printer that includes Adobe PostScript Level 1, PostScript Level 2, or PostScript 3. To determine whether PostScript is included with your printer, see your printer's documentation or contact the manufacturer.
 
-If you are printing to a network printer, contact your network administrator to determine the printer name to use in the Copy command.
-
-Once the PostScript error handler has been downloaded to your printer, it remains active in the printer's memory until the printer is switched off. The error handler only affects print jobs that produce PostScript errors &mdash; other print jobs are not affected by it.
+Once the PostScript error handler has been downloaded to your printer, it remains active in the printer's memory until the printer is switched off or restarted. The error handler affects only print jobs that produce PostScript errors &mdash; other print jobs are not affected by it.
 
 ## Getting Involved
 
