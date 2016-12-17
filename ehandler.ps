@@ -14,15 +14,15 @@
 %* permissions and limitations under the License.
 
 /$brkpage where
-{pop(Error Handler in place - not loaded again\n)print flush stop}
+{pop (Error Handler in place - not loaded again\n) print flush stop}
 {serverdict begin statusdict begin 0000 checkpassword
-  {(Error Handler 2.2 downloaded.\n)print flush 0000 exitserver}
-  {(Bad Password on loading error handler!!!\n)print flush stop}ifelse
-}ifelse
+  {(Error Handler 2.2 downloaded.\n) print flush 0000 exitserver}
+  {(Bad Password on loading error handler!!!\n) print flush stop} ifelse
+} ifelse
 /=string where {pop}{/=string 128 string def} ifelse
 /$brkpage 64 dict def $brkpage begin
 /excdp countexecstack def
-/rbd {bind readonly def}bind def
+/rbd {bind readonly def} bind def
 /prnt {
   dup type /stringtype ne {=string cvs} if
   dup print
@@ -35,104 +35,104 @@
   0 ty neg rlineto
   closepath fill
   tox toy moveto 0 setgray show
-  }rbd
+} rbd
 /nl {
   (\n) print
-  currentpoint exch pop dup 72 le{showpage pop 720}if
+  currentpoint exch pop dup 72 le {showpage pop 720} if
   lmargin exch moveto
   0 -10 rmoveto
-  }rbd
-/== {/cp 0 def typPr nl}rbd
+} rbd
+/== {/cp 0 def typPr nl} rbd
 /typPr {
-  dup type dup currentdict exch known {exec}{unknowntype}ifelse
-  }rbd
+  dup type dup currentdict exch known {exec}{unknowntype} ifelse
+} rbd
 /lmargin 72 def /rmargin 72 def
 /tprint {
   dup length cp add rmargin gt {nl /cp 0 def} if
   dup length cp add /cp exch def
   prnt
-  }rbd
-/cvsprint {=string cvs tprint ( ) tprint}rbd
-/unknowntype {exch pop cvlit (??) tprint cvsprint}rbd
-/integertype {cvsprint}rbd
-/realtype {cvsprint}rbd
-/booleantype {cvsprint}rbd
-/operatortype {(--) tprint cvsprint (--) tprint}rbd
-/marktype {pop (-mark- ) tprint}rbd
+} rbd
+/cvsprint {=string cvs tprint ( ) tprint} rbd
+/unknowntype {exch pop cvlit (??) tprint cvsprint} rbd
+/integertype {cvsprint} rbd
+/realtype {cvsprint} rbd
+/booleantype {cvsprint} rbd
+/operatortype {(--) tprint cvsprint (--) tprint} rbd
+/marktype {pop (-mark- ) tprint} rbd
 [
   {(systemdict) dup load exch}
-  systemdict/globaldict known{{(globaldict) dup load exch}}if
+  systemdict /globaldict known {{(globaldict) dup load exch}} if
   {(userdict) dup load exch}
   {(statusdict) dup load exch}
   {(serverdict) dup load exch}
   {(FontDirectory) dup load exch}
-  /internaldict where {pop {1183615869 internaldict (internaldict)}}if
+  /internaldict where {pop {1183615869 internaldict (internaldict)}} if
   {currentdict (dictdict)}
-] 
-dup length 
-dict begin{exec def}forall 
+]
+dup length
+dict begin {exec def} forall
 currentdict end
 /dictdict exch def
-/dicttype{
+/dicttype {
   dup dictdict exch known {
     dictdict exch get
+  }{
+    userdict {
+      2 index eq {
+        true exit
+      }{pop} ifelse
+    } forall
+    dup true eq {
+      pop exch pop
     }{
-      userdict {
+      systemdict {
         2 index eq {
           true exit
-        } {pop} ifelse
+        }{pop} ifelse
       } forall
       dup true eq {
         pop exch pop
-      } {
-        systemdict {
-          2 index eq {
-            true exit
-          } {pop} ifelse
-        } forall
-          dup true eq {
-            pop exch pop
-          } {
-          pop (-dictionary- ) 
-        } ifelse
+      }{
+        pop (-dictionary- )
       } ifelse
-    } ifelse 
+    } ifelse
+  } ifelse
   tprint
-  }rbd
-/nulltype {pop (-null- ) tprint}rbd
-/filetype {pop (-filestream- ) tprint}rbd
-/savetype {pop (-savelevel- ) tprint}rbd
-/fonttype {pop (-fontid- ) tprint}rbd
-/nametype {dup xcheck not {(/) tprint}if cvsprint}rbd
+} rbd
+/nulltype {pop (-null- ) tprint} rbd
+/filetype {pop (-filestream- ) tprint} rbd
+/savetype {pop (-savelevel- ) tprint} rbd
+/fonttype {pop (-fontid- ) tprint} rbd
+/nametype {dup xcheck not {(/) tprint} if cvsprint} rbd
 /stringtype {
   dup rcheck {
     (\() tprint tprint (\)) tprint
-    }{
+  }{
     pop (-string- ) tprint
-    } ifelse
-  }rbd
+  } ifelse
+} rbd
 /arraytype {
   dup rcheck {
     dup xcheck {
       ({ ) tprint {typPr ( ) tprint} forall (}) tprint
-      }{
-      ([ ) tprint {typPr ( ) tprint} forall (]) tprint
-      } ifelse
     }{
-    pop (-array- ) tprint
+      ([ ) tprint {typPr ( ) tprint} forall (]) tprint
     } ifelse
-  }rbd
+  }{
+    pop (-array- ) tprint
+  } ifelse
+} rbd
 /packedarraytype {
   dup rcheck {
     dup xcheck {
       ({) tprint {typPr} forall (}) tprint
-      }{
-      ([) tprint {typPr} forall (]) tprint
-      } ifelse
     }{
-    pop (-packedarray- ) tprint
+      ([) tprint {typPr} forall (]) tprint
     } ifelse
-  } rbd
+  }{
+    pop (-packedarray- ) tprint
+  } ifelse
+} rbd
 /courier /Courier findfont 10 scalefont def
 /oldHdlEr errordict /handleerror get def
 end % $brkpage
@@ -143,7 +143,7 @@ end % $brkpage
     /newerror false store
     vmstatus pop pop 0 ne {grestoreall} if
     initgraphics courier setfont
-    lmargin 720 moveto (JOB: ) prnt 
+    lmargin 720 moveto (JOB: ) prnt
     statusdict /jobname get =string cvs prnt
     nl (ERROR: ) prnt
     errorname prnt
@@ -153,29 +153,30 @@ end % $brkpage
       nl nl (STACK: ) prnt nl nl
       $error /ostack get aload length {==} repeat
     } if
-      nl nl (CURRENTFILE: ) prnt nl
-      save errordict /rangecheck {stop} put
-      10 -1 1 {
-        (%stdin)(r)file =string {readline} stopped {pop exch pop true} if 
-        {exch 1 eq{nl prnt(...)}if nl prnt} 
-        {exch pop dup length 0 gt {nl prnt}{pop}ifelse (<<EOF>>)nl prnt exit}ifelse
-      } for
-      currentpoint 3 -1 roll restore moveto
+    nl nl (CURRENTFILE: ) prnt nl
+    save errordict /rangecheck {stop} put
+    10 -1 1 {
+      (%stdin)(r) file =string {readline} stopped {pop exch pop true} if
+      {exch 1 eq {nl prnt(...)} if nl prnt}
+      {exch pop dup length 0 gt {nl prnt}{pop} ifelse (<<EOF>>) nl prnt exit} ifelse
+    } for
+    currentpoint 3 -1 roll restore moveto
     $error /dstack known {
       nl nl (DICTSTACK: ) prnt nl nl
       $error /dstack get aload length {==} repeat
     } if
-      $error /estack known {
+    $error /estack known {
       nl nl (EXECSTACK: ) prnt nl nl
       $error /estack get aload length excdp sub {==} repeat excdp {pop} repeat
     } if
-      systemdict /showpage get exec
-      /newerror true store
-      /oldHdlEr load end end end exec
-    }{
-      end end end
-    } ifelse
-  }
+    systemdict /showpage get exec
+    /newerror true store
+    /oldHdlEr load end end end exec
+  }{
+    end end end
+  } ifelse
+}
+
 dup 0 systemdict put
 dup 4 $brkpage put
 bind readonly
