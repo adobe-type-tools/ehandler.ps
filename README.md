@@ -14,4 +14,4 @@ Once the PostScript error handler has been downloaded to your printer, it remain
 
 ## Getting Involved
 
-Send suggestions for changes to the ehandler.ps project maintainer, [Dr. Ken Lunde](mailto:lunde@adobe.com?subject=[GitHub]%20ehandler.ps), for consideration.
+Suggest changes by submitting an [Issue](https://github.com/adobe-type-tools/ehandler.ps/issues).
